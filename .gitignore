@@ -66,6 +66,10 @@ target/
 # Venv
 venv/
 
+# dvc
+
+.dvc/
+
 # Pycharm
 .idea
 

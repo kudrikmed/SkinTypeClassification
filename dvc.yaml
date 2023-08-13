@@ -1,0 +1,33 @@
+stages:
+
+  train_model_oily:
+    cmd: python src/models/train_model.py data/raw/oily_dry oily_dry_model.keras Adam 0.001
+    deps:
+      - data/raw/oily_dry
+      - src/models/train_model.py
+    outs:
+      - models/oily_dry_model.keras
+
+  train_model_pigmented:
+    cmd: python src/models/train_model.py data/raw/pigmented_skin pigmented_nonpigmented_model.keras SGD 0.01
+    deps:
+      - data/raw/pigmented_skin
+      - src/models/train_model.py
+    outs:
+      - models/pigmented_nonpigmented_model.keras
+
+  train_model_sensitive:
+    cmd: python src/models/train_model.py data/raw/sensitive_resistant sensation_model.keras Adam 0.001
+    deps:
+      - data/raw/sensitive_resistant
+      - src/models/train_model.py
+    outs:
+      - models/sensation_model.keras
+
+  train_model_wrinkles:
+    cmd: python src/models/train_model.py data/raw/wrinkled_smooth wrinkles_model.keras Adam 0.001
+    deps:
+      - data/raw/wrinkled_smooth
+      - src/models/train_model.py
+    outs:
+      - models/wrinkles_model.keras

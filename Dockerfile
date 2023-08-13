@@ -1,6 +1,6 @@
 FROM python:3.9
 
-COPY requirements-dev.txt setup.py /workdir/
+COPY requirements-dev.txt image.jpg /workdir/
 COPY app/ /workdir/app/
 COPY models/ /workdir/models/
 COPY src/ /workdir/src

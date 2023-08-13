@@ -1,0 +1,6 @@
+outs:
+- md5: 1ede665d6cedab3ce66e3e48527ecb75.dir
+  size: 28241003
+  nfiles: 200
+  hash: md5
+  path: pigmented_skin

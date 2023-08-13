@@ -1,0 +1,6 @@
+outs:
+- md5: 1ca8d2aa30b78f32c7bdd31e4bf0c960.dir
+  size: 25458927
+  nfiles: 200
+  hash: md5
+  path: sensitive_resistant

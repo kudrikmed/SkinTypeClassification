@@ -1,0 +1,6 @@
+outs:
+- md5: e0762a857622b5de04002769c2d27e84.dir
+  size: 46752639
+  nfiles: 200
+  hash: md5
+  path: oily_dry

@@ -1,0 +1,6 @@
+outs:
+- md5: b2aa25aa7e3ecd74badafdaffdb93714.dir
+  size: 19222986
+  nfiles: 200
+  hash: md5
+  path: wrinkled_smooth

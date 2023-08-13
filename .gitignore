@@ -67,8 +67,10 @@ target/
 venv/
 
 # dvc
-
 .dvc/
+
+# mlruns
+mlruns/
 
 # Pycharm
 .idea

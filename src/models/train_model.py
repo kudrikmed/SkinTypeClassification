@@ -1,6 +1,6 @@
 import tensorflow as tf
 from tensorflow import keras
-from keras.layers import Dense
+from keras.layers import Dense, Rescaling, RandomFlip, RandomRotation
 from keras.models import Model
 from os import path
 import click
@@ -44,6 +44,20 @@ def train_model(data_dir: str, model_name: str, optimizer: str, learning_rate: f
         image_size=(img_height, img_width),
         batch_size=batch_size)
 
+    # data normalization according to pretrained net docs
+    preprocessing_layer = Rescaling(scale=1. / 127.5, offset=-1.)
+    train_ds = train_ds.map(lambda a, b: (preprocessing_layer(a), b))
+    val_ds = val_ds.map(lambda a, b: (preprocessing_layer(a), b))
+
+    # data augmentation
+    random_flip_layer = RandomFlip(mode="horizontal_and_vertical")
+    train_ds = train_ds.map(lambda a, b: (random_flip_layer(a), b))
+    val_ds = val_ds.map(lambda a, b: (random_flip_layer(a), b))
+
+    random_rotation_layer = RandomRotation(factor=0.2)
+    train_ds = train_ds.map(lambda a, b: (random_rotation_layer(a), b))
+    val_ds = val_ds.map(lambda a, b: (random_rotation_layer(a), b))
+
     logger.info('loading pretrained model...')
     mobile = tf.keras.applications.mobilenet.MobileNet()
     x = mobile.layers[-5].output
@@ -67,6 +81,7 @@ def train_model(data_dir: str, model_name: str, optimizer: str, learning_rate: f
               validation_data=val_ds,
               epochs=50,
               verbose=2)
+
     tf.keras.saving.save_model(model, path.join('models/', model_name))
     mlflow.tensorflow.log_model(
         model=model,

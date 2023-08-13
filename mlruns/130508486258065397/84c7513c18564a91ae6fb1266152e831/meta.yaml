@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/User/PycharmProjects/SkinTypeClassification/mlruns/130508486258065397/84c7513c18564a91ae6fb1266152e831/artifacts
+end_time: 1691950897294
+entry_point_name: ''
+experiment_id: '130508486258065397'
+lifecycle_stage: active
+run_id: 84c7513c18564a91ae6fb1266152e831
+run_name: spiffy-dove-731
+run_uuid: 84c7513c18564a91ae6fb1266152e831
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1691950885423
+status: 3
+tags: []
+user_id: User

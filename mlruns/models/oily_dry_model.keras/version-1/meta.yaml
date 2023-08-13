@@ -1,0 +1,13 @@
+aliases: []
+creation_timestamp: 1691950071720
+current_stage: None
+description: null
+last_updated_timestamp: 1691950071720
+name: oily_dry_model.keras
+run_id: 1b532ada9e1f4e638b64cb2e8df4e3d6
+run_link: null
+source: file:///C:/Users/User/PycharmProjects/SkinTypeClassification/mlruns/130508486258065397/1b532ada9e1f4e638b64cb2e8df4e3d6/artifacts/models
+status: READY
+status_message: null
+user_id: null
+version: 1

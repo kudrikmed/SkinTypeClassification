@@ -63,6 +63,9 @@ target/
 *.db
 *.rdb
 
+# Venv
+venv
+
 # Pycharm
 .idea
 
@@ -87,6 +90,3 @@ target/
 
 # Mypy cache
 .mypy_cache/
-
-# Temp files
-image.jpg

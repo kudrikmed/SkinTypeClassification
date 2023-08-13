@@ -4,18 +4,32 @@ import aiofiles
 from app.preprocess_image import preprocess_image
 import tensorflow as tf
 import numpy as np
+import json
 
 
 class SkinTypeResponse(BaseModel):
     skin_type: str
+    short_info: str
 
 
 app = FastAPI()
 
+# load models
 pigmentation_model = tf.keras.models.load_model('models/pigmented_nonpigmented_model.keras')
 oily_model = tf.keras.models.load_model('models/oily_dry_model.keras')
 sensation_model = tf.keras.models.load_model('models/sensation_model.keras')
 wrinkles_model = tf.keras.models.load_model('models/wrinkles_model.keras')
+
+
+# load info
+def get_text_info():
+    f = open('text_info.json', encoding="utf-8")
+    data = json.load(f)
+    f.close()
+    return data
+
+
+text_info = get_text_info()
 
 
 @app.post("/macro")
@@ -33,6 +47,7 @@ async def predict_macro(file: UploadFile):
     skin_type += 'P' if np.argmax(is_pigmented) else 'N'
     skin_type += 'W' if np.argmax(is_wrinkled) else 'T'
     response = SkinTypeResponse(
-        skin_type=skin_type
+        skin_type=skin_type,
+        short_info=text_info[skin_type]
     )
     return response

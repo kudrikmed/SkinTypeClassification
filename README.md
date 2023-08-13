@@ -32,4 +32,4 @@ To run the app locally:
  
 Where to see?
 -----------
-You can see the realisation in **[Telegram bot](https://t.me/BeautyScienceFaceAnalysisBot)**
+You can see the realisation in **[Telegram bot](https://t.me/BeautyScieneFaceAnalysisBot)**

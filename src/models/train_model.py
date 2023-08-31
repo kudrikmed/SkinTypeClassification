@@ -1,7 +1,4 @@
 import tensorflow as tf
-from tensorflow import keras
-from keras.layers import Dense, Rescaling, RandomFlip, RandomRotation
-from keras.models import Model
 from os import path
 import click
 import logging
@@ -45,16 +42,16 @@ def train_model(data_dir: str, model_name: str, optimizer: str, learning_rate: f
         batch_size=batch_size)
 
     # data normalization according to pretrained net docs
-    preprocessing_layer = Rescaling(scale=1. / 127.5, offset=-1.)
+    preprocessing_layer = tf.keras.layers.Rescaling(scale=1. / 127.5, offset=-1.)
     train_ds = train_ds.map(lambda a, b: (preprocessing_layer(a), b))
     val_ds = val_ds.map(lambda a, b: (preprocessing_layer(a), b))
 
     # data augmentation
-    random_flip_layer = RandomFlip(mode="horizontal_and_vertical")
+    random_flip_layer = tf.keras.layers.RandomFlip(mode="horizontal_and_vertical")
     train_ds = train_ds.map(lambda a, b: (random_flip_layer(a), b))
     val_ds = val_ds.map(lambda a, b: (random_flip_layer(a), b))
 
-    random_rotation_layer = RandomRotation(factor=0.2)
+    random_rotation_layer = tf.keras.layers.RandomRotation(factor=0.2)
     train_ds = train_ds.map(lambda a, b: (random_rotation_layer(a), b))
     val_ds = val_ds.map(lambda a, b: (random_rotation_layer(a), b))
 
@@ -62,15 +59,15 @@ def train_model(data_dir: str, model_name: str, optimizer: str, learning_rate: f
     mobile = tf.keras.applications.mobilenet.MobileNet()
     x = mobile.layers[-5].output
     x = tf.keras.layers.Reshape(target_shape=(1024,))(x)
-    output = Dense(units=1, activation='sigmoid')(x)
-    model = Model(inputs=mobile.input, outputs=output)
+    output = tf.keras.layers.Dense(units=1, activation='sigmoid')(x)
+    model = tf.keras.models.Model(inputs=mobile.input, outputs=output)
     for layer in model.layers[:-22]:
         layer.trainable = False
 
     if optimizer == 'SGD':
-        opt = keras.optimizers.SGD(learning_rate)
+        opt = tf.keras.optimizers.SGD(learning_rate)
     elif optimizer == 'Adam':
-        opt = keras.optimizers.Adam(learning_rate)
+        opt = tf.keras.optimizers.Adam(learning_rate)
 
     logger.info('Training model...')
     model.compile(optimizer=opt,

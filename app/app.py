@@ -5,7 +5,7 @@ from app.preprocess_image import preprocess_image
 import numpy as np
 import json
 import os
-import keras
+import tensorflow as tf
 
 
 class SkinTypeResponse(BaseModel):
@@ -21,10 +21,10 @@ sm_path = os.path.normpath('models/sensation_model.keras')
 wm_path = os.path.normpath('models/wrinkles_model.keras')
 
 # load models
-pigmentation_model = keras.models.load_model(pm_path)
-oily_model = keras.models.load_model(om_path)
-sensation_model = keras.models.load_model(sm_path)
-wrinkles_model = keras.models.load_model(wm_path)
+pigmentation_model = tf.keras.models.load_model(pm_path)
+oily_model = tf.keras.models.load_model(om_path)
+sensation_model = tf.keras.models.load_model(sm_path)
+wrinkles_model = tf.keras.models.load_model(wm_path)
 
 
 # load info

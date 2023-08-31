@@ -1,7 +1,7 @@
 stages:
 
   train_model_oily:
-    cmd: python src/models/train_model.py data/raw/oily_dry oily_dry_model.keras Adam 0.001
+    cmd: python src/models/train_model.py data/raw/oily_dry oily_dry_model.keras Adam 0.0001
     deps:
       - data/raw/oily_dry
       - src/models/train_model.py

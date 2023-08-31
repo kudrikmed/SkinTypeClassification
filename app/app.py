@@ -2,9 +2,10 @@ from fastapi import FastAPI, UploadFile
 from pydantic import BaseModel
 import aiofiles
 from app.preprocess_image import preprocess_image
-import tensorflow as tf
 import numpy as np
 import json
+import os
+import keras
 
 
 class SkinTypeResponse(BaseModel):
@@ -14,11 +15,16 @@ class SkinTypeResponse(BaseModel):
 
 app = FastAPI()
 
+pm_path = os.path.normpath('models/pigmented_nonpigmented_model.keras')
+om_path = os.path.normpath('models/oily_dry_model.keras')
+sm_path = os.path.normpath('models/sensation_model.keras')
+wm_path = os.path.normpath('models/wrinkles_model.keras')
+
 # load models
-pigmentation_model = tf.keras.models.load_model('models/pigmented_nonpigmented_model.keras')
-oily_model = tf.keras.models.load_model('models/oily_dry_model.keras')
-sensation_model = tf.keras.models.load_model('models/sensation_model.keras')
-wrinkles_model = tf.keras.models.load_model('models/wrinkles_model.keras')
+pigmentation_model = keras.models.load_model(pm_path)
+oily_model = keras.models.load_model(om_path)
+sensation_model = keras.models.load_model(sm_path)
+wrinkles_model = keras.models.load_model(wm_path)
 
 
 # load info

@@ -18,7 +18,7 @@ mlflow.tensorflow.autolog()
 @click.argument('optimizer', type=click.types.STRING)
 @click.argument('learning_rate', type=click.types.FLOAT)
 def train_model(data_dir: str, model_name: str, optimizer: str, learning_rate: float):
-    batch_size = 32
+    batch_size = 16
     img_height = 224
     img_width = 224
     learning_rate = float(learning_rate)
@@ -62,7 +62,7 @@ def train_model(data_dir: str, model_name: str, optimizer: str, learning_rate: f
     mobile = tf.keras.applications.mobilenet.MobileNet()
     x = mobile.layers[-5].output
     x = tf.keras.layers.Reshape(target_shape=(1024,))(x)
-    output = Dense(units=2, activation='sigmoid')(x)
+    output = Dense(units=1, activation='sigmoid')(x)
     model = Model(inputs=mobile.input, outputs=output)
     for layer in model.layers[:-22]:
         layer.trainable = False
@@ -74,12 +74,15 @@ def train_model(data_dir: str, model_name: str, optimizer: str, learning_rate: f
 
     logger.info('Training model...')
     model.compile(optimizer=opt,
-                  loss='sparse_categorical_crossentropy',
-                  metrics=['accuracy'])
+                  loss='binary_crossentropy',
+                  metrics=['accuracy',
+                           tf.keras.metrics.Precision(),
+                           tf.keras.metrics.Recall(),
+                           tf.keras.metrics.AUC()])
 
     model.fit(x=train_ds,
               validation_data=val_ds,
-              epochs=50,
+              epochs=20,
               verbose=2)
 
     tf.keras.saving.save_model(model, path.join('models/', model_name))

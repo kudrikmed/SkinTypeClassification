@@ -1,0 +1,8 @@
+oily_dry_model.keras
+pigmented_nonpigmented_model.keras
+sensation_model.keras
+wrinkles_model.keras
+/oily_dry_model.h5
+/pigmented_nonpigmented_model.h5
+/sensation_model.h5
+/wrinkles_model.h5

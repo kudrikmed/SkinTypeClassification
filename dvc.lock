@@ -1,25 +1,24 @@
 schema: '2.0'
 stages:
   train_model_oily:
-    cmd: python src/models/train_model.py data/raw/oily_dry oily_dry_model.keras Adam
-      0.001
+    cmd: python src/train_model.py data/raw/oily_dry oily_dry_model.h5 Adam 0.0001
     deps:
     - path: data/raw/oily_dry
       hash: md5
       md5: e0762a857622b5de04002769c2d27e84.dir
       size: 46752639
       nfiles: 200
-    - path: src/models/train_model.py
+    - path: src/train_model.py
       hash: md5
-      md5: 0a347d50158d1614935378243f88bbd9
-      size: 3282
+      md5: ebb36aedb47ae0df5a48820d8e25ed05
+      size: 6505
     outs:
-    - path: models/oily_dry_model.keras
+    - path: models/oily_dry_model.h5
       hash: md5
-      md5: 2867a1d991b82b63d76620c6302761ac
-      size: 28148799
+      md5: f4cef6d2db33b43f8f6845e1af5465b8
+      size: 28141488
   train_model_pigmented:
-    cmd: python src/models/train_model.py data/raw/pigmented_skin pigmented_nonpigmented_model.keras
+    cmd: python src/train_model.py data/raw/pigmented_skin pigmented_nonpigmented_model.h5
       SGD 0.01
     deps:
     - path: data/raw/pigmented_skin
@@ -27,17 +26,17 @@ stages:
       md5: 1ede665d6cedab3ce66e3e48527ecb75.dir
       size: 28241003
       nfiles: 200
-    - path: src/models/train_model.py
+    - path: src/train_model.py
       hash: md5
-      md5: 0a347d50158d1614935378243f88bbd9
-      size: 3282
+      md5: ebb36aedb47ae0df5a48820d8e25ed05
+      size: 6505
     outs:
-    - path: models/pigmented_nonpigmented_model.keras
+    - path: models/pigmented_nonpigmented_model.h5
       hash: md5
-      md5: 10d89608ed347574df5a1c756b888730
-      size: 20682873
+      md5: f945b69ed07609e31174abcbc96810f4
+      size: 20665648
   train_model_sensitive:
-    cmd: python src/models/train_model.py data/raw/sensitive_resistant sensation_model.keras
+    cmd: python src/train_model.py data/raw/sensitive_resistant sensation_model.h5
       Adam 0.001
     deps:
     - path: data/raw/sensitive_resistant
@@ -45,30 +44,30 @@ stages:
       md5: 1ca8d2aa30b78f32c7bdd31e4bf0c960.dir
       size: 25458927
       nfiles: 200
-    - path: src/models/train_model.py
+    - path: src/train_model.py
       hash: md5
-      md5: 0a347d50158d1614935378243f88bbd9
-      size: 3282
+      md5: ebb36aedb47ae0df5a48820d8e25ed05
+      size: 6505
     outs:
-    - path: models/sensation_model.keras
+    - path: models/sensation_model.h5
       hash: md5
-      md5: 69b0188051e49b3ca959e1d4d1b58328
-      size: 28148799
+      md5: 1c7dee73a5667c59778b10f38829a59c
+      size: 28141488
   train_model_wrinkles:
-    cmd: python src/models/train_model.py data/raw/wrinkled_smooth wrinkles_model.keras
-      Adam 0.001
+    cmd: python src/train_model.py data/raw/wrinkled_smooth wrinkles_model.h5 Adam
+      0.001
     deps:
     - path: data/raw/wrinkled_smooth
       hash: md5
       md5: b2aa25aa7e3ecd74badafdaffdb93714.dir
       size: 19222986
       nfiles: 200
-    - path: src/models/train_model.py
+    - path: src/train_model.py
       hash: md5
-      md5: 0a347d50158d1614935378243f88bbd9
-      size: 3282
+      md5: ebb36aedb47ae0df5a48820d8e25ed05
+      size: 6505
     outs:
-    - path: models/wrinkles_model.keras
+    - path: models/wrinkles_model.h5
       hash: md5
-      md5: a5e064461803bc23b23747cb56b7c3c2
-      size: 28148799
+      md5: 4da66aa7905c07465d237da5ed7777f2
+      size: 28141488

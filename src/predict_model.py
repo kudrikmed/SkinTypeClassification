@@ -65,10 +65,8 @@ def predict_skin_type(image_path, pigmentation_model_path, oily_model_path, sens
     is_wrinkled = wrinkles_model.predict(image)
 
     # Determine the skin type based on predictions
-    skin_type = ''
-    skin_type += 'O' if np.argmax(is_oily) else 'D'  # Oily or Dry
-    skin_type += 'S' if np.argmax(is_sensitive) else 'R'  # Sensitive or Resilient
-    skin_type += 'P' if np.argmax(is_pigmented) else 'N'  # Pigmented or Non-Pigmented
-    skin_type += 'W' if np.argmax(is_wrinkled) else 'T'  # Wrinkled or Tight
-
+    skin_type = 'O' if is_oily[0][0] > 0.5 else 'D'  # Oily or Dry
+    skin_type += 'S' if is_sensitive[0][0] > 0.5 else 'R'  # Sensitive or Resilient
+    skin_type += 'P' if is_pigmented[0][0] > 0.5 else 'N'  # Pigmented or Non-Pigmented
+    skin_type += 'W' if is_wrinkled[0][0] > 0.5 else 'T'  # Wrinkled or Tight
     return skin_type

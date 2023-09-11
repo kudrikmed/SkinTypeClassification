@@ -5,6 +5,14 @@ The Skin Type Classification project leverages advanced machine learning techniq
 
 This project aims to provide an efficient tool for both skincare professionals and enthusiasts to determine their Baumann skin type quickly and accurately. By utilizing a diverse dataset of facial images, along with carefully curated feature extraction methods, this model can effectively differentiate between the various Baumann skin types, enabling personalized skincare recommendations and routines.
 
+Technological Stack
+-------------------
+- Tensorflow
+- Keras
+- FastAPI
+- DVC (Data Version Control)
+- MLflow
+
 How to use?
 -----------
 To run the app locally:
@@ -29,7 +37,24 @@ To run the app locally:
 > "short_info": "While the majority of OSPT skin types struggle with acne and related pigmentation problems, following a consistent skincare regimen aimed at preventing acne rather than treating lesions and scars will leave this skin type with a healthy, clear complexion and even skin tone."
 >
 >}
- 
+
 Where to see?
 -----------
 You can see the realisation in **[Telegram bot](https://t.me/BeautyScieneFaceAnalysisBot)**
+
+Docker
+------
+
+also, you can try this project in a **[docker container](https://hub.docker.com/repository/docker/kudrikmed/skin-type/general)**
+
+Metrics
+--------
+
+![MetricsImage](metrics.png)
+
+Author
+------
+
+**Dzmitry Kudrytski**, PhD, MD, Plastic Surgeon, and Data Scientist
+
+For inquiries, please contact me via **[email](kudrikmed@gmail.com)**

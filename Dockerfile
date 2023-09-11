@@ -1,6 +1,6 @@
 FROM python:3.9
 
-COPY requirements.txt image.jpg /workdir/
+COPY requirements.txt image.jpg text_info.json /workdir/
 COPY app/ /workdir/app/
 COPY models/ /workdir/models/
 COPY src/ /workdir/src

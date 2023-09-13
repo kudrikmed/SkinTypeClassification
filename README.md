@@ -15,7 +15,9 @@ Technological Stack
 
 How to use?
 -----------
-To run the app locally:
+
+### Try ready model:
+
 1. Download this project
 2. Create venv
 3. Install all dependencies
@@ -37,6 +39,24 @@ To run the app locally:
 > "short_info": "While the majority of OSPT skin types struggle with acne and related pigmentation problems, following a consistent skincare regimen aimed at preventing acne rather than treating lesions and scars will leave this skin type with a healthy, clear complexion and even skin tone."
 >
 >}
+
+### Reproduce learning process:
+
+To run the app locally:
+1. Download this project
+2. Create venv
+3. Install all dependencies
+> pip install -r requirements-dev.txt
+4. **[Download dataset](https://drive.google.com/file/d/1UmGOhudwfi0SKUs9X74ubDdFFh8VZ0dJ/view?usp=sharing)** and put all 4 directories (`oily_dry`, `pigmented_skin`, `sensitive_skin`, `wrinkled_smooth`) into `data/raw` project's directory
+5. Add your project to git by running `git init` in root directory
+6. Run
+> dvc repro
+7. To see experiment metrics, run
+> mlflow ui
+
+**NB!** Make sure that the data you track in `dvc` you do not version in `git`
+
+and move to browser
 
 Where to see?
 -----------

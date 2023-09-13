@@ -23,14 +23,14 @@ How to use?
 3. Install all dependencies
 > pip install -r requirements.txt
 4. Run uvicorn
-> uvicorn app.app:app --host 0.0.0.0 --port XXXX
-<p><small>where XXXX - is parameter, specifying the port on which the server will be started (usually 80)</small></p>
-<p>Then make a POST request to localhost/macro with an image file of facial skin texture in its body</p>
+> uvicorn app.app:app --host 0.0.0.0 --port 80
+<p><small>where 80 - is parameter, specifying the port on which the server will be started</small></p>
+<p>Then make a POST request to localhost:80/macro with an image file of facial skin texture in its body</p>
 <p>Example of skin image:</p>
 
 ![SkinImage](image.jpg)
 
-<p>Response body example
+<p>Response body example</p>
 
 >{
 > 
@@ -42,7 +42,6 @@ How to use?
 
 ### Reproduce learning process:
 
-To run the app locally:
 1. Download this project
 2. Create venv
 3. Install all dependencies
@@ -54,9 +53,9 @@ To run the app locally:
 7. To see experiment metrics, run
 > mlflow ui
 
-**NB!** Make sure that the data you track in `dvc` you do not version in `git`
-
 and move to browser
+
+**NB!** Make sure that the data you track in `dvc` you do not version in `git`
 
 Where to see?
 -----------
